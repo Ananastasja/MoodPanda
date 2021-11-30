@@ -1,13 +1,10 @@
 import com.codeborne.selenide.Configuration;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
+import com.codeborne.selenide.WebDriverRunner;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import pages.*;
-
-import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
-import static com.codeborne.selenide.WebDriverRunner.setWebDriver;
+import steps.MyDiarySteps;
+import steps.RateYourHappinessSteps;
 
 public class BaseTest {
 
@@ -16,6 +13,9 @@ public class BaseTest {
     MoodUpdatedModalPage moodUpdatedModalPage;
     MyDiaryPage myDiaryPage;
     RateYourHappinessModalPage rateYourHappinessModalPage;
+    HomePage homePage;
+    RateYourHappinessSteps rateYourHappinessSteps;
+    MyDiarySteps myDiarySteps;
 
     @BeforeMethod
     public void init() {
@@ -23,19 +23,19 @@ public class BaseTest {
         Configuration.timeout = 15000;
         Configuration.holdBrowserOpen = true;
         Configuration.headless = false;
-/*        ChromeOptions chromeOptions = new ChromeOptions();
-        WebDriver driver = new ChromeDriver(chromeOptions);
-        setWebDriver(driver);*/
         loginPage = new LoginPage();
         feedPage = new FeedPage();
         moodUpdatedModalPage = new MoodUpdatedModalPage();
         myDiaryPage = new MyDiaryPage();
         rateYourHappinessModalPage = new RateYourHappinessModalPage();
+        homePage = new HomePage();
+        rateYourHappinessSteps = new RateYourHappinessSteps();
+        myDiarySteps = new MyDiarySteps();
     }
 
 
     @AfterMethod
     public void closeBrowser() {
-//        getWebDriver().quit();
+        WebDriverRunner.getWebDriver().quit();
     }
 }
