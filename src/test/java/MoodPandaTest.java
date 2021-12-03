@@ -39,7 +39,7 @@ public class MoodPandaTest extends BaseTest {
         rateYourHappinessModalPage.selectDateFromCalender("Nov", "2021", "26")
                 .clickUpdateMoodBtn()
                 .clickGoToDiaryBtn();
-        Assert.assertEquals(myDiaryPage.getDateText(), "4 days ago");
+        Assert.assertEquals(myDiaryPage.getDateText(), "26 Nov 2021");
     }
 
     @Test(description = "Logging in and out")
