@@ -1,5 +1,6 @@
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import utils.PropertyReader;
 
 public class MoodPandaTest extends BaseTest {
 
@@ -9,7 +10,7 @@ public class MoodPandaTest extends BaseTest {
 
     @Test(description = "Login and updating mood via Update Mood btn > verifying message about successful update")
     public void loginAndVerifyMoodUpdatedTest() {
-        myDiarySteps.loginAndUpdateMood("tms_qa08onl_3@mailinator.com", "123456", 1);
+        myDiarySteps.loginAndUpdateMood(System.getProperty("email", PropertyReader.getProperty("email")), System.getProperty("password", PropertyReader.getProperty("password")), 1);
         Assert.assertEquals(moodUpdatedModalPage.getSuccessfullyUpdatedMoodText(), EXPECTED_UPDATED_MOOD_TEXT);
     }
 
