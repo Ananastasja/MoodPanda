@@ -14,7 +14,7 @@ public class FeedPage {
     public static final By LOGOUT_BTN = By.xpath("//*[@id='Settings']//*[text()='Logout']");
 
     public FeedPage waitForMoodBtnVisible() {
-        $(UPDATE_MOOD_BTN_CSS).shouldBe(Condition.visible, Duration.ofSeconds(10));
+        $(UPDATE_MOOD_BTN_CSS).shouldBe(Condition.visible, Duration.ofSeconds(15));
         return this;
     }
 
